@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Gerador de Senhas",
+  "version": "1.0",
+  "description": "Gera senhas e analisa o tempo de quebra por força bruta",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon48.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon48.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

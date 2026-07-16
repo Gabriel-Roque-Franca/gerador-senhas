@@ -2,7 +2,7 @@
 # Gerador e Analisador de Senhas
 # Trabalho Academico - Matematica Computacional Aplicada
 # ============================================================
-import random
+import secrets
 import string
 
 # --- Configuracoes do usuario ---
@@ -94,7 +94,7 @@ def formatar_tempo(segundos):
 tempo_formatado = formatar_tempo(tempo_segundos)
 
 # --- Geracao de 3 sugestoes de senha ---
-senhas = [''.join(random.choices(alfabeto, k=tamanho)) for _ in range(3)]
+senhas = [''.join(secrets.choice(alfabeto) for _ in range(tamanho)) for _ in range(3)]
 
 # --- Funcoes auxiliares para o contorno ---
 largura = 52
