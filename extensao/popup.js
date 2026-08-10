@@ -1,3 +1,11 @@
+// --- Atualiza o número do slider em tempo real (fora do clique do botão) ---
+const sliderTamanho = document.getElementById('tamanho');
+const labelTamanho = document.getElementById('valorTamanho');
+
+sliderTamanho.addEventListener('input', () => {
+  labelTamanho.textContent = `${sliderTamanho.value} Caracteres`;
+});
+
 document.getElementById('gerar').addEventListener('click', () => {
 
   // --- 1. Ler os parâmetros escolhidos pelo usuário ---
@@ -15,7 +23,8 @@ document.getElementById('gerar').addEventListener('click', () => {
   if (usarSimbolos) alfabeto += '!@#$%^&*()_+-=[]{}|;:,.<>?';
 
   if (alfabeto === '') {
-    document.getElementById('resultado').textContent = 'Selecione ao menos um tipo de caractere.';
+    document.getElementById('resultado').innerHTML =
+      '<div class="card">Selecione ao menos um tipo de caractere.</div>';
     return;
   }
 
@@ -45,29 +54,73 @@ document.getElementById('gerar').addEventListener('click', () => {
     if (segundos < ANO) return `${Math.floor(segundos / DIA)} dias`;
     const anos = segundos / ANO;
     if (!isFinite(anos)) return 'tempo praticamente infinito';
-    return `${anos.toLocaleString('pt-BR', {maximumFractionDigits: 0})} anos`;
+    return `${anos.toLocaleString('pt-BR', { maximumFractionDigits: 1 })} anos`;
   }
   const tempoFormatado = formatarTempo(tempoSegundos);
 
-  // --- 6. Gerar as 3 sugestões de senha ---
+  // --- 6. Gerar as 3 sugestões de senha, usando fonte segura de aleatoriedade ---
   function gerarSenha() {
-  const valores = new Uint32Array(tamanho);
-  crypto.getRandomValues(valores);
-  let senha = '';
-  for (let i = 0; i < tamanho; i++) {
-    senha += alfabeto[valores[i] % alfabeto.length];
+    const valores = new Uint32Array(tamanho);
+    crypto.getRandomValues(valores);
+    let senha = '';
+    for (let i = 0; i < tamanho; i++) {
+      senha += alfabeto[valores[i] % alfabeto.length];
+    }
+    return senha;
   }
-  return senha;
-}
   const senhas = [gerarSenha(), gerarSenha(), gerarSenha()];
 
-  // --- 7. Exibir tudo na tela ---
+  // --- 7. Exibir tudo na tela, no layout do LockGate ---
+  const niveis = ['Muito baixo', 'Baixo', 'Médio', 'Alto', 'Muito alto'];
+  const indiceNivel = niveis.indexOf(nivel);
+
+  const pinosHtml = niveis.map((_, i) =>
+    `<div class="pino ${i <= indiceNivel ? 'ativo' : ''}"></div>`
+  ).join('');
+
+  const rotuloForca = (indiceNivel >= 3) ? 'Forte' : (indiceNivel === 2 ? 'Médio' : 'Fraco');
+
+  const senhasHtml = senhas.map(s => `
+    <div class="senha-linha">
+      <div class="texto">
+        <code>${s}</code>
+        <span class="forca">● ${rotuloForca}</span>
+      </div>
+      <button class="copiar" data-senha="${s}">⧉</button>
+    </div>
+  `).join('');
+
   document.getElementById('resultado').innerHTML = `
-    <h4>Sugestões</h4>
-    <ul>${senhas.map(s => `<li><code>${s}</code></li>`).join('')}</ul>
-    <p><b>Espaço de busca:</b> ${espacoBusca.toLocaleString('pt-BR')} combinações</p>
-    <p><b>Nível de segurança:</b> ${nivel}</p>
-    <p><b>Tempo estimado (força bruta):</b> ${tempoFormatado}</p>
+    <div class="card">
+      <div class="nivel-linha">
+        <span class="rotulo">Nível de Segurança</span>
+        <span class="valor">${nivel}</span>
+      </div>
+      <div class="pinos">${pinosHtml}</div>
+      <div class="escala">
+        <span>Fraco</span><span>Forte</span><span class="destaque">Muito Forte</span>
+      </div>
+    </div>
+
+    <div class="card card-tempo">
+      <span>🔑</span>
+      <div>
+        <span class="rotulo">Tempo para quebrar (força bruta)</span>
+        <span class="valor">${tempoFormatado}</span>
+      </div>
+    </div>
+
+    <div class="titulo-secao">SENHAS GERADAS</div>
+    ${senhasHtml}
   `;
+
+  // --- 8. Botão de copiar em cada senha ---
+  document.querySelectorAll('.copiar').forEach(botao => {
+    botao.addEventListener('click', () => {
+      navigator.clipboard.writeText(botao.dataset.senha);
+      botao.textContent = '✓';
+      setTimeout(() => { botao.textContent = '⧉'; }, 1200);
+    });
+  });
 
 });
