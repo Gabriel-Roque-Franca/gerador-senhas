@@ -26,14 +26,6 @@ para quebrá-la por força bruta — aplicando Análise Combinatória
 - HTML / CSS
 - Python (versão original em linha de comando)
 
-## Como rodar localmente
-
-1. Clone este repositório
-2. Acesse `chrome://extensions`
-3. Ative o "Modo do desenvolvedor"
-4. Clique em "Carregar sem compactação"
-5. Selecione a pasta `extensao`
-
 ## Fundamentação e decisões técnicas
 
 - **Análise Combinatória aplicada à segurança**: o espaço de busca de uma
@@ -55,4 +47,3 @@ para quebrá-la por força bruta — aplicando Análise Combinatória
 
 **Gabriel Roque França**
 Estudante de Ciência da Computação | Cibersegurança & Redes
-[LinkedIn] · [GitHub]
