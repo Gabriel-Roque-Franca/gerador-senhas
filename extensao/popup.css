@@ -1,0 +1,244 @@
+* { box-sizing: border-box; }
+
+body {
+  width: 340px;
+  margin: 0;
+  padding: 16px;
+  background: #14161A;
+  color: #F5F5F5;
+  font-family: -apple-system, "Segoe UI", sans-serif;
+}
+
+.cabecalho {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.icone-app img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.icone-app {
+  width: 34px;
+  height: 34px;
+  background: #1DB870;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.cabecalho h1 {
+  font-size: 15px;
+  margin: 0;
+}
+
+.cabecalho p {
+  font-size: 11px;
+  color: #8A9099;
+  margin: 0;
+}
+
+.card {
+  background: #1E2126;
+  border: 1px solid #2A2E35;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+}
+
+.linha-titulo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #8A9099;
+  margin-bottom: 8px;
+}
+
+.valor-tamanho {
+  background: rgba(29, 184, 112, 0.15);
+  color: #1DB870;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 11px;
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: #1DB870;
+}
+
+.opcao {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  padding: 8px 0;
+  border-bottom: 1px solid #2A2E35;
+}
+
+.opcao:last-child { border-bottom: none; }
+
+.opcao small {
+  color: #8A9099;
+  font-size: 11px;
+  margin-left: 6px;
+}
+
+.toggle {
+  position: relative;
+  width: 38px;
+  height: 22px;
+  display: inline-block;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider-toggle {
+  position: absolute;
+  inset: 0;
+  background: #2A2E35;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.slider-toggle::before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 2px;
+  top: 2px;
+  background: white;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+
+.toggle input:checked + .slider-toggle {
+  background: #1DB870;
+}
+
+.toggle input:checked + .slider-toggle::before {
+  transform: translateX(16px);
+}
+
+.pinos {
+  display: flex;
+  gap: 4px;
+  margin: 8px 0;
+}
+
+.pino {
+  height: 5px;
+  flex: 1;
+  border-radius: 3px;
+  background: #2A2E35;
+}
+
+.pino.ativo { background: #1DB870; }
+
+.nivel-linha {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.nivel-linha .rotulo { color: #8A9099; }
+.nivel-linha .valor { color: #1DB870; font-weight: 600; }
+
+.escala {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #8A9099;
+  margin-top: 4px;
+}
+
+.escala .destaque { color: #1DB870; }
+
+.card-tempo {
+  background: rgba(29, 184, 112, 0.08);
+  border: 1px solid rgba(29, 184, 112, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-tempo span.rotulo {
+  display: block;
+  font-size: 11px;
+  color: #8A9099;
+}
+
+.card-tempo span.valor {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.titulo-secao {
+  font-size: 11px;
+  color: #8A9099;
+  letter-spacing: 0.05em;
+  margin: 12px 0 6px 0;
+}
+
+.senha-linha {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1E2126;
+  border: 1px solid #2A2E35;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+}
+
+.senha-linha .texto code {
+  font-family: "SF Mono", Consolas, monospace;
+  font-size: 13px;
+  display: block;
+}
+
+.senha-linha .texto .forca {
+  font-size: 11px;
+  color: #1DB870;
+}
+
+.senha-linha .copiar {
+  background: none;
+  border: none;
+  color: #8A9099;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.senha-linha .copiar:hover { color: #1DB870; }
+
+button#gerar {
+  width: 100%;
+  padding: 12px;
+  background: #1DB870;
+  border: none;
+  border-radius: 10px;
+  color: #0A0C0E;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+button#gerar:hover { background: #22C97D; }

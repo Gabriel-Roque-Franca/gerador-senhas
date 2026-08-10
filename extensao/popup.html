@@ -2,24 +2,50 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <style>
-    body { width: 320px; font-family: sans-serif; padding: 12px; }
-  </style>
+  <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-  <h3>Gerador de Senhas</h3>
 
-  <label>Tamanho da senha:</label>
-  <input type="number" id="tamanho" value="12" min="1"><br><br>
+  <div class="cabecalho">
+    <div class="icone-app"><img src="icons/icon128.png" alt="LockGate"></div>
+    <div>
+      <h1>LockGate</h1>
+      <p>Gerador de Senhas</p>
+    </div>
+  </div>
 
-  <label><input type="checkbox" id="minusculas" checked> Minúsculas</label><br>
-  <label><input type="checkbox" id="maiusculas" checked> Maiúsculas</label><br>
-  <label><input type="checkbox" id="numeros" checked> Números</label><br>
-  <label><input type="checkbox" id="simbolos"> Símbolos</label><br><br>
+  <div class="card">
+    <div class="linha-titulo">
+      <span>TAMANHO</span>
+      <span class="valor-tamanho" id="valorTamanho">16 Caracteres</span>
+    </div>
+    <input type="range" id="tamanho" min="4" max="32" value="16">
+  </div>
 
-  <button id="gerar">Gerar senhas</button>
+  <div class="card">
+    <label class="opcao">
+      <span>Letras maiúsculas <small>A-Z</small></span>
+      <span class="toggle"><input type="checkbox" id="maiusculas" checked><span class="slider-toggle"></span></span>
+    </label>
+    <label class="opcao">
+      <span>Letras minúsculas <small>a-z</small></span>
+      <span class="toggle"><input type="checkbox" id="minusculas" checked><span class="slider-toggle"></span></span>
+    </label>
+    <label class="opcao">
+      <span>Números <small>0-9</small></span>
+      <span class="toggle"><input type="checkbox" id="numeros" checked><span class="slider-toggle"></span></span>
+    </label>
+    <label class="opcao">
+      <span>Caracteres especiais <small>!@#$%</small></span>
+      <span class="toggle"><input type="checkbox" id="simbolos"><span class="slider-toggle"></span></span>
+    </label>
+  </div>
 
   <div id="resultado"></div>
+
+  <button id="gerar">
+    <span>&#8635;</span> Gerar Novas Senhas
+  </button>
 
   <script src="popup.js"></script>
 </body>

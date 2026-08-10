@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Gerador de Senhas",
+  "name": "LockGate",
   "version": "1.0",
-  "description": "Gera senhas e analisa o tempo de quebra por força bruta",
+  "description": "Gera senhas seguras e mostra o tempo estimado para quebrá-las por força bruta",
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
