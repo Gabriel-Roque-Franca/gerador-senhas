@@ -1,4 +1,4 @@
-# 🔐 LockGate — Gerador de Senhas
+# LockGate — Gerador de Senhas
 
 Extensão de navegador que gera senhas seguras a partir de parâmetros
 escolhidos pelo usuário, exibindo o nível de segurança e o tempo estimado
