@@ -1,10 +1,14 @@
 {
   "manifest_version": 3,
   "name": "LockGate",
+  "short_name": "LockGate",
   "version": "1.0",
   "description": "Gera senhas seguras e mostra o tempo estimado para quebrá-las por força bruta",
+  "author": "Gabriel Roque França",
+  "homepage_url": "https://github.com/Gabriel-Roque-Franca/gerador-senhas",
   "action": {
     "default_popup": "popup.html",
+    "default_title": "Gerar senha segura",
     "default_icon": {
       "16": "icons/icon48.png",
       "48": "icons/icon48.png",
